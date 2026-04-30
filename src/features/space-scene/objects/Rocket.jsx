@@ -18,14 +18,9 @@ import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { KSC_SURFACE, KSC_NORMAL } from '@shared/constants/trajectory'
 
-// Orientation quaternion: rocket Y-axis → KSC outward normal
-const UP = new THREE.Vector3(0, 1, 0)
-const KSC_QUAT = new THREE.Quaternion().setFromUnitVectors(UP, KSC_NORMAL.clone().normalize())
-
-// Lift rocket above the surface so engine nozzles don't clip into the Earth mesh.
-// SRB nozzles reach Y = -0.6 m in model space; at scale=0.005 that's -0.003 scene
-// units — add a generous margin of 0.05 along the surface normal.
-const ROCKET_POSITION = KSC_SURFACE.clone().addScaledVector(KSC_NORMAL, 0.05)
+// Orientation: rotate rocket's +Y to align with KSC outward normal
+const _up     = new THREE.Vector3(0, 1, 0)
+const KSC_QUAT = new THREE.Quaternion().setFromUnitVectors(_up, KSC_NORMAL.clone().normalize())
 
 // ─── geometry helpers ──────────────────────────────────────────────────────────
 const cyl  = (rTop, rBot, h, mat, segs = 48) =>
@@ -254,15 +249,37 @@ function buildRocket() {
   return { root, G, flameMeshes, restY, EXPLODE_OFFSETS }
 }
 
+const SCALE = 0.005
+
 export default function Rocket({
-  scale        = 0.005,
   showFlame    = false,
   showLabels   = false,
   exploded     = 0,
   rotationSpeed = 0,
 }) {
-  const { root, G, flameMeshes, restY, EXPLODE_OFFSETS } = useMemo(buildRocket, [])
-  const groupRef = useRef()
+  // Build rocket geometry AND apply world transform imperatively in useMemo.
+  // This avoids r3f prop-application quirks with quaternion + position + scale
+  // that can produce wrong matrix composition order.
+  const { wrapper, G, flameMeshes, restY, EXPLODE_OFFSETS } = useMemo(() => {
+    const built = buildRocket()
+
+    // Shift inner root up by 0.6 m so SRB nozzle tips (lowest point at Y=-0.6 m)
+    // sit exactly at the wrapper's local Y=0.
+    built.root.position.y = 0.6
+
+    // Wrapper holds position + orientation + scale — set all imperatively.
+    // Surface offset: 0.25 scene units along KSC_NORMAL so the base is
+    // clearly above the Earth mesh regardless of camera angle or depth precision.
+    const wrapper = new THREE.Group()
+    wrapper.position.copy(KSC_SURFACE).addScaledVector(KSC_NORMAL, 0.25)
+    wrapper.quaternion.copy(KSC_QUAT)
+    wrapper.scale.setScalar(SCALE)
+    wrapper.add(built.root)
+
+    return { wrapper, ...built }
+  }, [])
+
+  const groupRef = useRef(wrapper)
 
   useFrame((_, delta) => {
     const dt = Math.min(delta, 0.05)
@@ -289,20 +306,11 @@ export default function Rocket({
       })
     }
 
-    // auto-rotate
-    if (rotationSpeed && groupRef.current) {
-      groupRef.current.rotation.y += rotationSpeed * dt
+    // auto-rotate around surface normal (wrapper's local Y)
+    if (rotationSpeed) {
+      wrapper.rotateY(rotationSpeed * dt)
     }
   })
 
-  return (
-    <group
-      ref={groupRef}
-      position={ROCKET_POSITION}
-      quaternion={KSC_QUAT}
-      scale={scale}
-    >
-      <primitive object={root} />
-    </group>
-  )
+  return <primitive object={wrapper} />
 }
