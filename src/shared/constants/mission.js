@@ -1,5 +1,5 @@
 /**
- * MISSION_PHASES — ordered IDs matching PHASE_SEGMENTS in trajectory.js
+ * MISSION_PHASES — ordered IDs used by mission timing and HUD state.
  */
 export const MISSION_PHASES = Object.freeze({
   IDLE:        'idle',

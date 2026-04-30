@@ -15,8 +15,8 @@
   --text: #edf7ff;
   --text-dim: rgba(237, 247, 255, 0.62);
   --bg: #020611;
-  --font-display: 'Avenir Next Condensed', 'Arial Narrow', 'Segoe UI', sans-serif;
-  --font-ui: 'Avenir Next', 'Segoe UI', sans-serif;
+  --font-display: 'Space Grotesk', 'Avenir Next Condensed', 'Arial Narrow', sans-serif;
+  --font-ui: 'Space Grotesk', 'Avenir Next', 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', 'SFMono-Regular', 'Roboto Mono', Consolas, monospace;
 }
 

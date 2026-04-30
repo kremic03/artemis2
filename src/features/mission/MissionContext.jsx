@@ -154,31 +154,14 @@ export function MissionProvider({ children }) {
 
   // ── Controls ──────────────────────────────────────────────────────────────
   const play = useCallback(() => {
-    if (tRef.current > 0) {
-      isPlayingRef.current = true
-      setIsPlaying(true)
-      return
+    isPlayingRef.current = true
+    setIsPlaying(true)
+    if (tRef.current === 0) {
+      setPhase(MISSION_PHASES.LAUNCH)
+      phaseRef.current = MISSION_PHASES.LAUNCH
+      setStoryText(PHASE_DESCRIPTIONS[MISSION_PHASES.LAUNCH])
+      setSubPhase(LAUNCH_SUBPHASES.LIFTOFF)
     }
-    // Full launch sequence with countdown → ignition hold → liftoff
-    setShowCountdown(true)
-    setCountdownValue(10)
-    let count = 10
-    const iv = setInterval(() => {
-      count--
-      setCountdownValue(count)
-      if (count <= 0) {
-        clearInterval(iv)
-        setShowCountdown(false)
-        isPlayingRef.current = true
-        setIsPlaying(true)
-        setPhase(MISSION_PHASES.LAUNCH)
-        phaseRef.current = MISSION_PHASES.LAUNCH
-        setStoryText(PHASE_DESCRIPTIONS[MISSION_PHASES.LAUNCH])
-        // Enter IGNITION: thrust visible, rocket on pad, camera shakes
-        ignitionHoldRef.current = 1.35  // seconds
-        setSubPhase(LAUNCH_SUBPHASES.IGNITION)
-      }
-    }, 1000)
   }, [])
 
   const pause = useCallback(() => {

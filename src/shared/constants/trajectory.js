@@ -79,69 +79,6 @@ export const TRAJECTORY_CONTROL_POINTS = [
   new Vector3(-2.00, -4.80,  1.80),   // 31  Pacific splashdown
 ]
 
-// ─── How many points to sample per segment ────────────────────────────────────
-export const CURVE_SAMPLES = 90
-
-// ─── Mission trajectory segments (colored) ───────────────────────────────────
-export const PHASE_SEGMENTS = [
-  {
-    id: 'launch',
-    label: 'LAUNCH & ASCENT',
-    tStart: 0.000,
-    tEnd:   0.080,
-    color: '#ff7043',
-    glowColor: '#ff3d00',
-  },
-  {
-    id: 'orbit',
-    label: 'EARTH ORBIT',
-    tStart: 0.080,
-    tEnd:   0.380,
-    color: '#4fc3f7',
-    glowColor: '#0288d1',
-  },
-  {
-    id: 'tli',
-    label: 'TRANS-LUNAR INJECTION',
-    tStart: 0.380,
-    tEnd:   0.500,
-    color: '#69f0ae',
-    glowColor: '#00c853',
-  },
-  {
-    id: 'transit',
-    label: 'OUTBOUND TRANSIT',
-    tStart: 0.500,
-    tEnd:   0.620,
-    color: '#69f0ae',
-    glowColor: '#00c853',
-  },
-  {
-    id: 'lunar_flyby',
-    label: 'LUNAR FLYBY',
-    tStart: 0.620,
-    tEnd:   0.690,
-    color: '#eeeeee',
-    glowColor: '#b0bec5',
-  },
-  {
-    id: 'return',
-    label: 'RETURN TRAJECTORY',
-    tStart: 0.690,
-    tEnd:   0.930,
-    color: '#5c6bc0',
-    glowColor: '#3949ab',
-  },
-  {
-    id: 'reentry',
-    label: 'RE-ENTRY',
-    tStart: 0.930,
-    tEnd:   1.000,
-    color: '#ff7043',
-    glowColor: '#bf360c',
-  },
-]
-
 // ─── Numbered waypoints 1–15 ──────────────────────────────────────────────────
 export const WAYPOINTS = [
   { id:  1, t: 0.000, label: 'T+0 LIFTOFF',        phase: 'launch',      color: '#ff7043',
