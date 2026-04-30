@@ -53,10 +53,10 @@ const GLOW_FRAG = /* glsl */`
 `
 
 const TEXTURE_URLS = [
-  'https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg',
-  'https://unpkg.com/three-globe/example/img/earth-topology.png',
-  'https://unpkg.com/three-globe/example/img/earth-water.png',
-  'https://unpkg.com/three-globe/example/img/earth-clouds.png',
+  '/textures/earth-blue-marble.jpg',
+  '/textures/earth-topology.png',
+  '/textures/earth-water.png',
+  '/textures/earth-clouds.png',
 ]
 
 export default function Earth() {
