@@ -1,0 +1,73 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.72);
+  border: 1px solid rgba(79, 195, 247, 0.3);
+  box-shadow: 0 0 20px rgba(79, 195, 247, 0.1);
+  padding: 12px 16px;
+  backdrop-filter: blur(6px);
+  min-width: 280px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.label {
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  color: rgba(79, 195, 247, 0.7);
+  min-width: 40px;
+}
+
+.btn {
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  padding: 7px 16px;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all 0.15s;
+  background: transparent;
+}
+
+.primary {
+  border-color: #4fc3f7;
+  color: #4fc3f7;
+}
+.primary:hover { background: rgba(79, 195, 247, 0.15); box-shadow: 0 0 16px rgba(79,195,247,0.4); }
+
+.warning {
+  border-color: #ffb300;
+  color: #ffb300;
+}
+.warning:hover { background: rgba(255, 179, 0, 0.12); }
+
+.ghost {
+  border-color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.5);
+  padding: 7px 10px;
+}
+.ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+.pill {
+  font-family: 'Courier New', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  padding: 4px 9px;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.45);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.pill:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+.pillActive {
+  border-color: #4fc3f7;
+  color: #4fc3f7;
+  background: rgba(79, 195, 247, 0.12);
+}

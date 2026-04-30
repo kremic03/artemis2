@@ -1,0 +1,76 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --accent: #69d8ff;
+  --accent-strong: #baf1ff;
+  --accent-warm: #ffb86b;
+  --accent-dim: rgba(105, 216, 255, 0.32);
+  --panel-bg: rgba(4, 12, 28, 0.62);
+  --panel-strong: rgba(3, 10, 24, 0.84);
+  --panel-border: rgba(105, 216, 255, 0.24);
+  --text: #edf7ff;
+  --text-dim: rgba(237, 247, 255, 0.62);
+  --bg: #020611;
+  --font-display: 'Avenir Next Condensed', 'Arial Narrow', 'Segoe UI', sans-serif;
+  --font-ui: 'Avenir Next', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', 'Roboto Mono', Consolas, monospace;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(36, 100, 168, 0.22), transparent 34%),
+    radial-gradient(circle at 20% 20%, rgba(92, 186, 255, 0.1), transparent 24%),
+    radial-gradient(circle at 80% 78%, rgba(255, 154, 89, 0.08), transparent 28%),
+    linear-gradient(180deg, #030816 0%, #020611 55%, #01030a 100%);
+  letter-spacing: 0.01em;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before {
+  background:
+    radial-gradient(circle at center, transparent 0 38%, rgba(0, 0, 0, 0.36) 100%),
+    linear-gradient(90deg, rgba(105, 216, 255, 0.025), transparent 18%, transparent 82%, rgba(255, 184, 107, 0.02));
+}
+
+body::after {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 5px;
+  opacity: 0.16;
+  mix-blend-mode: screen;
+}
+
+button {
+  font-family: var(--font-mono);
+}
+
+canvas { display: block; outline: none; }
+
+/* Scrollbar — minimal */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--accent-dim); }

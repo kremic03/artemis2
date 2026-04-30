@@ -1,0 +1,73 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: linear-gradient(180deg, rgba(4, 11, 26, 0.84), rgba(2, 7, 18, 0.68));
+  border: 1px solid var(--panel-border);
+  padding: 12px 14px;
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 18px 34px rgba(0, 0, 0, 0.24),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.groupLabel {
+  font-size: 0.52rem;
+  letter-spacing: 0.14em;
+  color: rgba(186, 241, 255, 0.54);
+  min-width: 28px;
+}
+
+.sep {
+  width: 1px;
+  height: 14px;
+  background: rgba(105, 216, 255, 0.14);
+  margin: 0 4px;
+}
+
+/* Primary buttons */
+.btn {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  padding: 7px 18px;
+  border: 1px solid;
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.accent  { border-color: var(--accent); color: var(--accent-strong); }
+.accent:hover  { background: rgba(105, 216, 255, 0.12); box-shadow: 0 0 14px rgba(105, 216, 255, 0.22); }
+
+.warning { border-color: var(--accent-warm); color: var(--accent-warm); }
+.warning:hover { background: rgba(255, 184, 107, 0.1); }
+
+.ghost   { border-color: rgba(255,255,255,0.18); color: rgba(255,255,255,0.45); padding: 7px 12px; }
+.ghost:hover   { border-color: rgba(255,255,255,0.4); color: #fff; }
+
+/* Pill toggles */
+.pill {
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+  padding: 4px 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.4);
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.pill:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+
+.pillOn {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+  background: rgba(105, 216, 255, 0.1);
+}

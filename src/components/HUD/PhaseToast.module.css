@@ -1,0 +1,58 @@
+.toast {
+  position: absolute;
+  bottom: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, rgba(6, 15, 32, 0.9), rgba(2, 8, 20, 0.94));
+  border: 1px solid rgba(105, 216, 255, 0.26);
+  padding: 16px 26px;
+  max-width: 460px;
+  text-align: center;
+  backdrop-filter: blur(18px);
+  pointer-events: all;
+  animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+.toastExiting {
+  opacity: 0;
+  transform: translateX(-50%) translateY(16px) scale(0.985);
+}
+
+@keyframes slideUp {
+  0%   { opacity: 0; transform: translateX(-50%) translateY(20px) scale(0.98); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+.phaseName {
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  color: var(--accent-strong);
+  margin-bottom: 8px;
+}
+
+.body {
+  font-size: 0.76rem;
+  line-height: 1.65;
+  color: rgba(237, 247, 255, 0.82);
+}
+
+.dismiss {
+  margin-top: 12px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.35);
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
+  padding: 4px 14px;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.dismiss:hover { border-color: rgba(255,255,255,0.5); color: #fff; }

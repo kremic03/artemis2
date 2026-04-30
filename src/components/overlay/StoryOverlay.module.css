@@ -1,0 +1,91 @@
+/* ── Story text box ────────────────────────────────── */
+.storyBox {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.82);
+  border: 1px solid rgba(79, 195, 247, 0.4);
+  box-shadow: 0 0 30px rgba(79, 195, 247, 0.15);
+  padding: 18px 28px;
+  max-width: 480px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  backdrop-filter: blur(8px);
+  pointer-events: all;
+}
+
+.visible { opacity: 1; }
+
+.phaseBadge {
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: #4fc3f7;
+  margin-bottom: 8px;
+}
+
+.text {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: rgba(232, 244, 253, 0.85);
+  font-family: 'Courier New', monospace;
+}
+
+.dismiss {
+  margin-top: 12px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.4);
+  font-family: 'Courier New', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  padding: 4px 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.dismiss:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+/* ── Countdown ─────────────────────────────────────── */
+.countdownWrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+
+.countdownLabel {
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  color: rgba(79, 195, 247, 0.7);
+  margin-bottom: 16px;
+}
+
+.countdownNumber {
+  font-size: clamp(5rem, 18vw, 12rem);
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1;
+  text-shadow: 0 0 60px rgba(79, 195, 247, 0.6), 0 0 120px rgba(79, 195, 247, 0.3);
+  animation: countPulse 1s ease-out;
+}
+
+@keyframes countPulse {
+  from { transform: scale(1.2); opacity: 0.6 }
+  to   { transform: scale(1);   opacity: 1 }
+}
+
+.countdownSub {
+  margin-top: 20px;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: rgba(255,255,255,0.3);
+}

@@ -1,0 +1,35 @@
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(180deg, rgba(4, 11, 26, 0.82), rgba(2, 7, 18, 0.68));
+  border: 1px solid var(--panel-border);
+  padding: 8px 18px;
+  backdrop-filter: blur(14px);
+  white-space: nowrap;
+  box-shadow:
+    0 16px 32px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  flex-shrink: 0;
+  animation: blink 2.1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.35; transform: scale(0.85); }
+}
+
+.label {
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  color: rgba(237, 247, 255, 0.84);
+  transition: color 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}

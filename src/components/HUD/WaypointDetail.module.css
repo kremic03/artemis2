@@ -1,0 +1,52 @@
+.panel {
+  position: relative;
+  background: rgba(0, 0, 0, 0.82);
+  border: 1px solid rgba(79, 195, 247, 0.3);
+  padding: 16px 18px;
+  width: 220px;
+  backdrop-filter: blur(6px);
+  animation: slideIn 0.25s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(10px) }
+  to   { opacity: 1; transform: translateX(0) }
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.65rem;
+  cursor: pointer;
+  padding: 2px 4px;
+}
+.close:hover { color: #fff; }
+
+.id {
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 4px;
+}
+
+.label {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: #e8f4fd;
+  margin-bottom: 8px;
+}
+
+.divider {
+  border-top: 1px solid;
+  margin-bottom: 10px;
+}
+
+.desc {
+  font-size: 0.68rem;
+  line-height: 1.65;
+  color: rgba(232, 244, 253, 0.7);
+  font-family: 'Courier New', monospace;
+}
