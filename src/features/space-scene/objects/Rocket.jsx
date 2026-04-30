@@ -22,6 +22,11 @@ import { KSC_SURFACE, KSC_NORMAL } from '@shared/constants/trajectory'
 const UP = new THREE.Vector3(0, 1, 0)
 const KSC_QUAT = new THREE.Quaternion().setFromUnitVectors(UP, KSC_NORMAL.clone().normalize())
 
+// Lift rocket above the surface so engine nozzles don't clip into the Earth mesh.
+// SRB nozzles reach Y = -0.6 m in model space; at scale=0.005 that's -0.003 scene
+// units — add a generous margin of 0.05 along the surface normal.
+const ROCKET_POSITION = KSC_SURFACE.clone().addScaledVector(KSC_NORMAL, 0.05)
+
 // ─── geometry helpers ──────────────────────────────────────────────────────────
 const cyl  = (rTop, rBot, h, mat, segs = 48) =>
   new THREE.Mesh(new THREE.CylinderGeometry(rTop, rBot, h, segs, 1, false), mat)
@@ -293,7 +298,7 @@ export default function Rocket({
   return (
     <group
       ref={groupRef}
-      position={KSC_SURFACE}
+      position={ROCKET_POSITION}
       quaternion={KSC_QUAT}
       scale={scale}
     >
